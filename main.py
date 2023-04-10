@@ -1,6 +1,17 @@
 import asyncio
 import re
+import whisper
+import speech_recognition as sr
 from EdgeGPT import Chatbot, ConversationStyle
+
+recognizer = sr.Recognizer()
+BING_WAKEUP = "bing"
+
+def getWakeWord(input):
+    if BING_WAKEUP in input.lower():
+        return BING_WAKEUP
+    else:
+        return None
 
 async def main():
     # starting up the bing ai bot using the cookies for the newest edge (required to use Bing AI)
